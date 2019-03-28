@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:background="@color/colorAccent"
+
         android:id="@+id/fotoImageView"
         android:layout_width="96dp"
         android:layout_height="96dp"

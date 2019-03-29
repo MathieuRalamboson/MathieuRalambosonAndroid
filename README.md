@@ -8,7 +8,7 @@ Réalisation d'une application android sous AndroidStudio utilisant une API rest
 # Consigne respectées :
 - Deux écrans : Un écran avec une liste et un écran avec un détail de l'item.
 - Appel WebService à une API Rest. (2 Api différentes utilisé)
--Stockage des données en cache.
+- Stockage des données en cache.
 
 #Notation : Les plus
 - Architecture MVC

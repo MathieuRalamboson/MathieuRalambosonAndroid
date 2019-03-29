@@ -1,7 +1,5 @@
 package com.example.mathieuralambosonandroid.Model;
 
-import com.example.mathieuralambosonandroid.SecondActivity;
-
 import java.util.ArrayList;
 
 public class DetailRespuesta {

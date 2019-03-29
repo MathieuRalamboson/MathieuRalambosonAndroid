@@ -1,4 +1,4 @@
-package com.example.mathieuralambosonandroid;
+package com.example.mathieuralambosonandroid.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.mathieuralambosonandroid.Adapter.ListaPokemonAdapter;
+import com.example.mathieuralambosonandroid.R;
+import com.example.mathieuralambosonandroid.View.ListaPokemonAdapter;
 import com.example.mathieuralambosonandroid.Model.Pokemon;
 import com.example.mathieuralambosonandroid.Model.PokemonRespuesta;
 import com.example.mathieuralambosonandroid.Controller.PokeapiService;

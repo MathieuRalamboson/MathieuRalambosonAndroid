@@ -1,4 +1,4 @@
-package com.example.mathieuralambosonandroid.Adapter;
+package com.example.mathieuralambosonandroid.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mathieuralambosonandroid.Model.Detail;
 import com.example.mathieuralambosonandroid.Model.Pokemon;
 import com.example.mathieuralambosonandroid.R;
-import com.example.mathieuralambosonandroid.SecondActivity;
 
 import java.util.ArrayList;
 
@@ -60,7 +59,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"onClick: clicked on: " + p.getName());
-                Toast.makeText(context,p.getName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Clicked on Pokemon : "+p.getName(),Toast.LENGTH_SHORT).show();
 
                 //Declaration SecondActivity
                 Intent intent = new Intent(context, SecondActivity.class);
@@ -68,6 +67,8 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
                 intent.putExtra("image_name",p.getName());
 
                 context.startActivity(intent);
+
+
             }
         });
 

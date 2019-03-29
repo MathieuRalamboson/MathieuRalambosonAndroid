@@ -1,4 +1,4 @@
-package com.example.mathieuralambosonandroid;
+package com.example.mathieuralambosonandroid.View;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mathieuralambosonandroid.Controller.DetailapiService;
 import com.example.mathieuralambosonandroid.Model.Detail;
 import com.example.mathieuralambosonandroid.Model.DetailRespuesta;
+import com.example.mathieuralambosonandroid.R;
 
 import java.util.ArrayList;
 
@@ -50,32 +51,32 @@ public class SecondActivity extends AppCompatActivity {
     private void obtenerDetail(){
 
         DetailapiService service = retrofit.create(DetailapiService.class);
-         Call<DetailRespuesta> detailRespuestaCall = service.obtenerDetailPokemon();
+        Call<DetailRespuesta> detailRespuestaCall = service.obtenerDetailPokemon();
 
-         detailRespuestaCall.enqueue(new Callback<DetailRespuesta>() {
-             @Override
-             public void onResponse(Call<DetailRespuesta> call, Response<DetailRespuesta> response) {
-                 if(response.isSuccessful()){
+        detailRespuestaCall.enqueue(new Callback<DetailRespuesta>() {
+            @Override
+            public void onResponse(Call<DetailRespuesta> call, Response<DetailRespuesta> response) {
+                if(response.isSuccessful()){
 
-                     DetailRespuesta detailRespuesta = response.body();
-                     ArrayList<Detail> listaDetail = detailRespuesta.getPokemon();
+                    DetailRespuesta detailRespuesta = response.body();
+                    ArrayList<Detail> listaDetail = detailRespuesta.getPokemon();
 
-                     for(int i = 0; i < listaDetail.size(); i++){
-                         Detail d = listaDetail.get(i);
-                         Log.i(TAG,"Pokemon: " + d.getName()+" Detail : " + d.getWeight());
-                     }
+                    for(int i = 0; i < listaDetail.size(); i++){
+                        Detail d = listaDetail.get(i);
+                        Log.i(TAG,"Pokemon: " + d.getName()+" Detail : " + d.getWeight());
+                    }
 
-                 } else{
-                     Log.e(TAG,"Detail onResponse: " + response.errorBody());
-                 }
-             }
+                } else{
+                    Log.e(TAG,"Detail onResponse: " + response.errorBody());
+                }
+            }
 
-             @Override
-             public void onFailure(Call<DetailRespuesta> call, Throwable t) {
-                 Log.e(TAG,"Detail onFailure: " + t.getMessage());
+            @Override
+            public void onFailure(Call<DetailRespuesta> call, Throwable t) {
+                Log.e(TAG,"Detail onFailure: " + t.getMessage());
 
-             }
-         });
+            }
+        });
 
     }
 

@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                     for(int i = 0; i < listaPokemon.size(); i++){
                         Pokemon p = listaPokemon.get(i);
-                        Log.i(TAG, "Pokemon: "+ p.getUrl());
+                        Log.i(TAG, "Pokemon: "+ p.getName());
                     }
 
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);

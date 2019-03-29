@@ -27,17 +27,21 @@ public class SecondActivity extends AppCompatActivity {
         Log.d(TAG,"getIncomingIntent: checking for incoming intents.");
         //Si ca ne fonctionne pas App crash
 
-        if(getIntent().hasExtra("image_url")){
+        if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
             Log.d(TAG,"getIncomingIntent: found intent extras.");
             String imageUrl = getIntent().getStringExtra("image_url");
+            String imageName = getIntent().getStringExtra("image_name");
 
-            setImage(imageUrl);
+            setImage(imageUrl,imageName);
 
         }
     }
 
-    private void setImage(String imageUrl){
+    private void setImage(String imageUrl,String imageName){
         Log.d(TAG, "setImage: setting the image.");
+
+        TextView name = findViewById(R.id.nombreTextView);
+        name.setText(imageName);
 
         ImageView imageView = findViewById(R.id.fotoImageView);
         Glide.with(this)
@@ -46,6 +50,9 @@ public class SecondActivity extends AppCompatActivity {
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
+
+
+
 
     }
 }

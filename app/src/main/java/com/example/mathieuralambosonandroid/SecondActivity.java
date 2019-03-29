@@ -9,10 +9,23 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.mathieuralambosonandroid.Controller.DetailapiService;
+import com.example.mathieuralambosonandroid.Model.Detail;
+import com.example.mathieuralambosonandroid.Model.DetailRespuesta;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SecondActivity extends AppCompatActivity {
 
     private static final String TAG = "SecondActivity";
+
+    private Retrofit retrofit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,6 +33,46 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Log.d(TAG,"onCreate started.");
         getIncomingIntent();
+
+        //Retrofit
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://pokeapi.co/api/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        obtenerDetail();
+
+    }
+
+    private void obtenerDetail(){
+
+        DetailapiService service = retrofit.create(DetailapiService.class);
+         Call<DetailRespuesta> detailRespuestaCall = service.obtenerDetailPokemon();
+
+         detailRespuestaCall.enqueue(new Callback<DetailRespuesta>() {
+             @Override
+             public void onResponse(Call<DetailRespuesta> call, Response<DetailRespuesta> response) {
+                 if(response.isSuccessful()){
+
+                     DetailRespuesta detailRespuesta = response.body();
+                     ArrayList<Detail> listaDetail = detailRespuesta.getTypes();
+
+                     for(int i = 0; i < listaDetail.size(); i++){
+                         Detail p = listaDetail.get(i);
+                         Log.i(TAG,"Detail : " + p.getSlot());
+                     }
+
+                 } else{
+                     Log.e(TAG,"Detail onResponse: " + response.errorBody());
+                 }
+             }
+
+             @Override
+             public void onFailure(Call<DetailRespuesta> call, Throwable t) {
+                 Log.e(TAG,"Detail onFailure: " + t.getMessage());
+
+             }
+         });
 
     }
 
@@ -50,8 +103,6 @@ public class SecondActivity extends AppCompatActivity {
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
-
-
 
 
     }

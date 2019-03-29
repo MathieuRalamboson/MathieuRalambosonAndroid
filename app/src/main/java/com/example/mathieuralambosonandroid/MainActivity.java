@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.mathieuralambosonandroid.Adapter.ListaPokemonAdapter;
 import com.example.mathieuralambosonandroid.Model.Pokemon;
 import com.example.mathieuralambosonandroid.Model.PokemonRespuesta;
 import com.example.mathieuralambosonandroid.Controller.PokeapiService;

@@ -1,8 +1,7 @@
-package com.example.mathieuralambosonandroid;
+package com.example.mathieuralambosonandroid.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +14,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mathieuralambosonandroid.Model.Pokemon;
+import com.example.mathieuralambosonandroid.R;
+import com.example.mathieuralambosonandroid.SecondActivity;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
                 Toast.makeText(context,p.getName(),Toast.LENGTH_SHORT).show();
 
                 //Declaration SecondActivity
-                Intent intent = new Intent(context,SecondActivity.class);
+                Intent intent = new Intent(context, SecondActivity.class);
                 intent.putExtra("image_url", p.getUrl());
                 intent.putExtra("image_name",p.getName());
                 context.startActivity(intent);

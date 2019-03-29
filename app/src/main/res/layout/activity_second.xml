@@ -21,6 +21,30 @@
         android:text="Pokemon Name"
         android:textSize="20sp"
         android:textColor="#000"/>
+    <TextView
+        android:id="@+id/height"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Height : "
+        android:textColor="#000"/>
+    <TextView
+        android:id="@+id/weight"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Weight : "
+        android:textColor="#000"/>
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Type : "
+        android:textColor="#000"/>
+    <TextView
+        android:id="@+id/weakness"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Weakness : "
+        android:textColor="#000"/>
 
 
 </LinearLayout>

@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface DetailapiService {
-   @GET("pokemon/2")
+   @GET("pokedex.json")
    Call<DetailRespuesta> obtenerDetailPokemon();
 }

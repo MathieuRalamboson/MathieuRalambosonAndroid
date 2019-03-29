@@ -32,15 +32,18 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         Log.d(TAG,"onCreate started.");
-        getIncomingIntent();
+
 
         //Retrofit
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://pokeapi.co/api/v2/")
+                .baseUrl("https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+
         obtenerDetail();
+
+        getIncomingIntent();
 
     }
 
@@ -55,11 +58,11 @@ public class SecondActivity extends AppCompatActivity {
                  if(response.isSuccessful()){
 
                      DetailRespuesta detailRespuesta = response.body();
-                     ArrayList<Detail> listaDetail = detailRespuesta.getTypes();
+                     ArrayList<Detail> listaDetail = detailRespuesta.getPokemon();
 
                      for(int i = 0; i < listaDetail.size(); i++){
-                         Detail p = listaDetail.get(i);
-                         Log.i(TAG,"Detail : " + p.getSlot());
+                         Detail d = listaDetail.get(i);
+                         Log.i(TAG,"Pokemon: " + d.getName()+" Detail : " + d.getWeight());
                      }
 
                  } else{
@@ -85,16 +88,34 @@ public class SecondActivity extends AppCompatActivity {
             String imageUrl = getIntent().getStringExtra("image_url");
             String imageName = getIntent().getStringExtra("image_name");
 
-            setImage(imageUrl,imageName);
+            String imageHeight = getIntent().getStringExtra("image_height");
+            String imageWeight = getIntent().getStringExtra("image_weight");
+            String imageType = getIntent().getStringExtra("image_type");
+            String imageWeakness = getIntent().getStringExtra("image_weakness");
+
+
+            setImage(imageUrl,imageName,imageHeight,imageWeight,imageType,imageWeakness);
 
         }
     }
 
-    private void setImage(String imageUrl,String imageName){
+    private void setImage(String imageUrl,String imageName,String imageHeight,String imageWeight,String imageType,String imageWeakness){
         Log.d(TAG, "setImage: setting the image.");
 
         TextView name = findViewById(R.id.nombreTextView);
         name.setText(imageName);
+
+        TextView height = findViewById(R.id.height);
+        height.setText(imageHeight);
+
+        TextView weight = findViewById(R.id.weight);
+        weight.setText(imageWeight);
+
+        TextView type = findViewById(R.id.type);
+        type.setText(imageType);
+
+        TextView weakness = findViewById(R.id.weakness);
+        weakness.setText(imageWeakness);
 
         ImageView imageView = findViewById(R.id.fotoImageView);
         Glide.with(this)

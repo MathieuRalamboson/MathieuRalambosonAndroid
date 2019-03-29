@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.mathieuralambosonandroid.Model.Detail;
 import com.example.mathieuralambosonandroid.Model.Pokemon;
 import com.example.mathieuralambosonandroid.R;
 import com.example.mathieuralambosonandroid.SecondActivity;
@@ -24,11 +25,13 @@ import static android.support.constraint.Constraints.TAG;
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 
     private ArrayList<Pokemon> dataset;
+    private ArrayList<Detail> pokemon;
     private Context context;
 
     public ListaPokemonAdapter(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
+        pokemon = new ArrayList<>();
     }
 
     @Override
@@ -40,7 +43,11 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Pokemon p = dataset.get(position);//ATTENTION
+        //final Detail d = pokemon.get(position);
         holder.nombreTextView.setText(p.getName());
+        //holder.height.setText(d.getHeight());
+        //holder.weight.setText(d.getWeight());
+        //holder.type.setText(d.getType());
 
         Glide.with(context)
                 .load("https://pokeres.bastionbot.org/images/pokemon/" + p.getNumber()+ ".png")
@@ -59,6 +66,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
                 Intent intent = new Intent(context, SecondActivity.class);
                 intent.putExtra("image_url", p.getUrl());
                 intent.putExtra("image_name",p.getName());
+
                 context.startActivity(intent);
             }
         });
@@ -79,12 +87,20 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
         private ImageView fotoImageView;
         private TextView nombreTextView;
+        private TextView height;
+        private TextView weight;
+        private TextView type;
+        private TextView weakness;
 
         public ViewHolder( View itemView) {
             super(itemView);
 
             fotoImageView = itemView.findViewById(R.id.fotoImageView);
             nombreTextView = itemView.findViewById(R.id.nombreTextView);
+            height = itemView.findViewById(R.id.height);
+            weight = itemView.findViewById(R.id.weight);
+            type = itemView.findViewById(R.id.type);
+            weakness = itemView.findViewById(R.id.weakness);
 
         }
     }

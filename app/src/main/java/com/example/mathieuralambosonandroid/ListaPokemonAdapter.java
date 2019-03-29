@@ -1,19 +1,24 @@
 package com.example.mathieuralambosonandroid;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.mathieuralambosonandroid.model.Pokemon;
+import com.example.mathieuralambosonandroid.Model.Pokemon;
 
 import java.util.ArrayList;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 
@@ -32,8 +37,8 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
     }
 
     @Override
-    public void onBindViewHolder( ViewHolder holder, int position) {
-        Pokemon p = dataset.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final Pokemon p = dataset.get(position);//ATTENTION
         holder.nombreTextView.setText(p.getName());
 
         Glide.with(context)
@@ -42,6 +47,19 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.fotoImageView);
+
+        holder.fotoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"onClick: clicked on: " + p.getName());
+                Toast.makeText(context,p.getName(),Toast.LENGTH_SHORT).show();
+
+                //Declaration SecondActivity
+                Intent intent = new Intent(context,SecondActivity.class);
+                intent.putExtra("image_url", p.getNumber());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

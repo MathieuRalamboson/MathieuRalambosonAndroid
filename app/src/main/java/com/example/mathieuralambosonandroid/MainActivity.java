@@ -7,9 +7,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.mathieuralambosonandroid.model.Pokemon;
-import com.example.mathieuralambosonandroid.model.PokemonRespuesta;
-import com.example.mathieuralambosonandroid.pokeapi.PokeapiService;
+import com.example.mathieuralambosonandroid.Model.Pokemon;
+import com.example.mathieuralambosonandroid.Model.PokemonRespuesta;
+import com.example.mathieuralambosonandroid.Controller.PokeapiService;
 
 import java.util.ArrayList;
 
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaPokemonAdapter = new ListaPokemonAdapter(this);

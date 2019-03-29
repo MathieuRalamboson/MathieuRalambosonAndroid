@@ -1,4 +1,4 @@
-package com.example.mathieuralambosonandroid.model;
+package com.example.mathieuralambosonandroid.Model;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package com.example.mathieuralambosonandroid.pokeapi;
+package com.example.mathieuralambosonandroid.Controller;
 
-import com.example.mathieuralambosonandroid.model.PokemonRespuesta;
+import com.example.mathieuralambosonandroid.Model.PokemonRespuesta;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

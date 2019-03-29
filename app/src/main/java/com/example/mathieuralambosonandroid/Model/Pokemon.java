@@ -16,7 +16,10 @@ public class Pokemon {
     }
 
     public String getUrl() {
-        return url;
+        String replace1 = url.replace("https://pokeapi.co/api/v2/pokemon/","");
+        String replace2 = replace1.replace("/","");
+
+        return replace2;
     }
 
     public void setUrl(String url) {

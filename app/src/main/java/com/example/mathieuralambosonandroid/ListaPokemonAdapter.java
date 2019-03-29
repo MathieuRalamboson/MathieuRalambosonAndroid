@@ -56,7 +56,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
                 //Declaration SecondActivity
                 Intent intent = new Intent(context,SecondActivity.class);
-                intent.putExtra("image_url", p.getNumber());
+                intent.putExtra("image_url", p.getUrl());
                 context.startActivity(intent);
             }
         });
